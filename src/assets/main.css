@@ -10,5 +10,7 @@
 
 body {
   background-color: #ddd;
+  font-family: 'Roboto', sans-serif;
   color: black;
+  height: 100vh;
 }

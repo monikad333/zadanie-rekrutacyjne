@@ -35,7 +35,7 @@ p {
 }
 
 .date {
-  padding: 30% 10%;
+  padding: 35% 10%;
 }
 
 hr {
