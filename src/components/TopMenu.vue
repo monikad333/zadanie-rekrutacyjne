@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import TopMenuCard from './TopMenuCard.vue'
-import UserMenuCard from './UserMenuCard.vue'
-import NotificationsCard from './NotificationsCard.vue'
+import TopMenuCard from '@/components/TopMenuCard.vue'
+import UserMenuCard from '@/components/UserMenuCard.vue'
+import NotificationsCard from '@/components/NotificationsCard.vue'
 </script>
 
 <template>
