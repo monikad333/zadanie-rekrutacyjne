@@ -12,15 +12,17 @@ const toggleSideBar = () => {
 
 <template>
   <div @click="toggleSideBar" class="btn">
-    <img src="./icons/burger.svg" alt="toggle menu" />
+    <img src="@/components/icons/burger.svg" alt="toggle menu" />
   </div>
   <div class="menu" :class="{ open: isSideBarOpen }">
     <CurrentDate />
     <div class="elements">
       <ul class="menu-items">
-        <li class="item-title"><img src="./icons/graph.svg" alt="graph icon" />Statistics</li>
         <li class="item-title">
-          <img src="./icons/users.svg" alt="users icon" />
+          <img src="@/components/icons/graph.svg" alt="graph icon" />Statistics
+        </li>
+        <li class="item-title">
+          <img src="@/components/icons/users.svg" alt="users icon" />
           Users
           <ul class="inside-items">
             <li>User List</li>
@@ -102,7 +104,7 @@ img {
     width: 100%;
   }
 }
-@media (max-width: 768) {
+@media (max-width: 768px) {
   .btn {
     padding: 2px;
     width: 20px;
