@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import TopMenuCard from './TopMenuCard.vue'
 import UserMenuCard from './UserMenuCard.vue'
+import NotificationsCard from './NotificationsCard.vue'
 </script>
 
 <template>
@@ -11,7 +12,8 @@ import UserMenuCard from './UserMenuCard.vue'
       <TopMenuCard card-content-top="depozyty" card-content-bottom="245"></TopMenuCard>
       <TopMenuCard card-content-top="zamówienia" card-content-bottom="245"></TopMenuCard>
     </div>
-    <div class="left-section">
+    <div class="right-section">
+      <NotificationsCard></NotificationsCard>
       <UserMenuCard card-content="Warsztat A12"></UserMenuCard>
     </div>
   </div>
@@ -19,7 +21,6 @@ import UserMenuCard from './UserMenuCard.vue'
 
 <style scoped>
 .main-bar {
-  overflow: hidden;
   display: flex;
   position: absolute;
   top: 0;
@@ -30,12 +31,14 @@ import UserMenuCard from './UserMenuCard.vue'
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 .card-section {
-  /* position: absolute; */
   display: flex;
   margin-left: 15%;
 }
-.left-section {
+.right-section {
+  position: absolute;
   display: flex;
+  height: 100%;
+  align-items: center;
   right: 0%;
 }
 </style>

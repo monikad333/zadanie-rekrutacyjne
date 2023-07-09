@@ -97,6 +97,11 @@ img {
   list-style: inside;
 }
 
+@media (max-width: 576px) {
+  .menu {
+    width: 100%;
+  }
+}
 @media (max-width: 768) {
   .btn {
     padding: 2px;
@@ -108,9 +113,9 @@ img {
   }
 }
 
-@media (max-width: 1200px) {
+/* @media (min-width: 1200px) {
   .menu {
-    width: 30%;
+    width: 20%;
   }
-}
+} */
 </style>
