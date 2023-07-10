@@ -3,6 +3,7 @@ import ProjectButton from '@/components/ProjectButton.vue'
 import DefaultCard from '@/components/DefaultCard.vue'
 import SmallButton from '@/components/SmallButton.vue'
 import { onMounted, ref } from 'vue'
+import BaseModal from '@/components/BaseModal.vue'
 
 const permissions = ref()
 
@@ -25,6 +26,15 @@ onMounted(() => {
     }
   ]
 })
+
+const modalActive = ref(false)
+const toggleModal = () => {
+  modalActive.value = !modalActive.value
+}
+
+const blockedAlert = () => {
+  alert('Profile is blocked')
+}
 </script>
 
 <template>
@@ -36,11 +46,16 @@ onMounted(() => {
       </div>
       <div class="btns">
         <ProjectButton btn-color="rgb(197, 64, 64)" btn-content="delete"></ProjectButton>
-        <ProjectButton btn-color="rgb(199, 156, 38)" btn-content="block"></ProjectButton>
+        <ProjectButton
+          @click="toggleModal"
+          btn-color="rgb(199, 156, 38)"
+          btn-content="block"
+        ></ProjectButton>
         <ProjectButton btn-color="rgb(58, 75, 94)" btn-content="set password"></ProjectButton>
         <ProjectButton btn-color="rgb(39, 96, 160)" btn-content="save"></ProjectButton>
       </div>
     </div>
+
     <div class="row">
       <DefaultCard left-content="Logs" right-content="Permissions" class="card">
         <template #top>
@@ -82,16 +97,21 @@ onMounted(() => {
                       <SmallButton btn-color="#ce1d1d" btn-content="delete"></SmallButton>
                     </td>
                   </tr>
-                  
                 </tbody>
               </table>
             </div></div
         ></template>
       </DefaultCard>
       <DefaultCard left-content="Załączniki" right-content="Historia" class="card-right">
-        vsadvcsdvsd
       </DefaultCard>
     </div>
+    <BaseModal @close="toggleModal" :modalActive="modalActive">
+      <template #header>Are you sure you want to block the account?</template>
+      <template #default>
+        <SmallButton @click="blockedAlert" btn-content="tak" btn-color="red" />
+        <SmallButton @click="toggleModal" btn-content="nie" btn-color="blue" />
+      </template>
+    </BaseModal>
   </div>
 </template>
 
