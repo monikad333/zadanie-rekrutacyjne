@@ -7,7 +7,22 @@ const routes = [
     path: '/',
     name: 'userEdit',
     component: UserEditVue
-  }
+  },
+  {
+    path: '/',
+    name: 'userList',
+    component: UserEditVue
+  },
+  {
+    path: '/',
+    name: 'Roles and Permissions',
+    component: UserEditVue
+  },
+  {
+    path: '/',
+    name: 'Settings',
+    component: UserEditVue
+  },
 ]
 
 const router: Router = createRouter({
