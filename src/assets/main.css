@@ -1,4 +1,6 @@
-@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *,
 *::before,
@@ -10,7 +12,7 @@
 }
 
 body {
-  background-color: #ddd;
+  background-color: #dddddd91;
   font-family: 'Roboto', sans-serif;
   color: black;
   height: 100vh;
