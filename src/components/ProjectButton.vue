@@ -3,7 +3,6 @@ defineProps<{
   btnContent: string
   btnColor: string
 }>()
-
 </script>
 
 <template>
@@ -13,7 +12,6 @@ defineProps<{
 </template>
 
 <style scoped>
-
 button {
   background-color: v-bind(btnColor);
 }
@@ -35,6 +33,5 @@ button {
   font-size: 12px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  
 }
 </style>

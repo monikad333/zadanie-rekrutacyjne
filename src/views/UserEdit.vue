@@ -7,7 +7,6 @@ import DefaultInput from '@/components/DefaultInput.vue'
 import DropComponent from '@/components/DropComponent.vue'
 import BaseModal from '@/components/BaseModal.vue'
 
-
 const userForm = ref({
   permissions: [
     {
@@ -48,10 +47,9 @@ onMounted(() => {
   ]
 })
 
-
 const saveProfile = () => {
   alert(JSON.stringify(userForm.value))
-  }
+}
 
 const modalActive = ref(false)
 const toggleModal = () => {
@@ -137,7 +135,6 @@ const blockedAlert = () => {
         ></template>
       </DefaultCard>
       <DefaultCard left-content="Załączniki" right-content="Historia" class="card-right">
-
         <template #top class="bg-white">
           <h1 class="attachment px-5 py-7 border-b text-xl bg-white">Załączniki</h1>
         </template>
@@ -193,7 +190,6 @@ const blockedAlert = () => {
             ></DefaultInput>
           </div>
         </template>
-
       </DefaultCard>
     </div>
     <BaseModal @close="toggleModal" :modalActive="modalActive">

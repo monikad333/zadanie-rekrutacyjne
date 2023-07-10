@@ -13,8 +13,11 @@ defineEmits<{
 <template>
   <div class="input-area">
     <label for="text" class="text-xs">{{ label }}</label>
-    <input :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)" :type="inputType" />
+    <input
+      :value="modelValue"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
+      :type="inputType"
+    />
   </div>
 </template>
 

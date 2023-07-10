@@ -2,7 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 import SideMenu from '@/components/menu/SideMenu.vue'
 import TopMenu from '@/components/menu/TopMenu.vue'
-
 </script>
 
 <template>

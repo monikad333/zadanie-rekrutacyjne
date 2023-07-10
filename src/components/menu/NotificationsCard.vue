@@ -28,8 +28,7 @@
   display: flex;
   text-align: center;
 }
-.bell{
-    width: 30px;
+.bell {
+  width: 30px;
 }
-
 </style>
