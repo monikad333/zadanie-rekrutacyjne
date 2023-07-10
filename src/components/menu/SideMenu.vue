@@ -3,6 +3,12 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import CurrentDate from '@/components/CurrentDate.vue'
 
+import { useRoute, useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const routes = router.getRoutes()
+
 const isSideBarOpen = ref(false)
 
 const toggleSideBar = () => {
@@ -17,18 +23,21 @@ const toggleSideBar = () => {
   <div class="menu" :class="{ open: isSideBarOpen }">
     <CurrentDate />
     <div class="elements">
-      <ul class="menu-items">
-        <li class="item-title">
+      <ul class="menu-items px-2">
+        <li class="item-title flex">
           <img src="@/components/icons/graph.svg" alt="graph icon" />Statistics
         </li>
         <li class="item-title">
-          <img src="@/components/icons/users.svg" alt="users icon" />
-          Users
+          <div class="flex">
+            <img src="@/components/icons/users.svg" alt="users icon" />
+            Users
+          </div>
           <ul class="inside-items">
-            <li>User List</li>
-            <li>User Edit</li>
-            <li>Roles and Permissions</li>
-            <li>Settings</li>
+            <li v-for="route of routes">
+              <router-link class="hover:color-sky" :to="{ name: route.name }"
+                >{{ route.name }}
+              </router-link>
+            </li>
           </ul>
         </li>
       </ul>
@@ -45,6 +54,7 @@ const toggleSideBar = () => {
   background-color: rgb(255, 255, 255);
   transition: 0.3s;
   transform: translateX(-100%);
+  z-index: 100;
 }
 
 .menu.open {
@@ -62,7 +72,7 @@ img {
 .btn {
   position: absolute;
   width: 15%;
-  z-index: 10;
+  z-index: 101;
 }
 
 .btn img:hover {

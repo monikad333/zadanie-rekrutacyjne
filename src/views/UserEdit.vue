@@ -5,6 +5,8 @@ import SmallButton from '@/components/SmallButton.vue'
 import { onMounted, ref } from 'vue'
 import DefaultInput from '@/components/DefaultInput.vue'
 import DropComponent from '@/components/DropComponent.vue'
+import BaseModal from '@/components/BaseModal.vue'
+
 
 const userForm = ref({
   permissions: [
@@ -46,8 +48,19 @@ onMounted(() => {
   ]
 })
 
+
 const saveProfile = () => {
   alert(JSON.stringify(userForm.value))
+  }
+
+const modalActive = ref(false)
+const toggleModal = () => {
+  modalActive.value = !modalActive.value
+}
+
+const blockedAlert = () => {
+  alert('Profile is blocked')
+  toggleModal()
 }
 </script>
 
@@ -60,7 +73,11 @@ const saveProfile = () => {
       </div>
       <div class="btns">
         <ProjectButton btn-color="rgb(197, 64, 64)" btn-content="delete"></ProjectButton>
-        <ProjectButton btn-color="rgb(199, 156, 38)" btn-content="block"></ProjectButton>
+        <ProjectButton
+          @click="toggleModal"
+          btn-color="rgb(199, 156, 38)"
+          btn-content="block"
+        ></ProjectButton>
         <ProjectButton btn-color="rgb(58, 75, 94)" btn-content="set password"></ProjectButton>
         <ProjectButton
           @click="saveProfile"
@@ -69,6 +86,7 @@ const saveProfile = () => {
         ></ProjectButton>
       </div>
     </div>
+
     <div class="row">
       <DefaultCard left-content="Logs" right-content="Permissions" class="card">
         <template #top>
@@ -119,6 +137,7 @@ const saveProfile = () => {
         ></template>
       </DefaultCard>
       <DefaultCard left-content="Załączniki" right-content="Historia" class="card-right">
+
         <template #top class="bg-white">
           <h1 class="attachment px-5 py-7 border-b text-xl bg-white">Załączniki</h1>
         </template>
@@ -174,8 +193,16 @@ const saveProfile = () => {
             ></DefaultInput>
           </div>
         </template>
+
       </DefaultCard>
     </div>
+    <BaseModal @close="toggleModal" :modalActive="modalActive">
+      <template #header>Are you sure you want to block the account?</template>
+      <template #default>
+        <SmallButton @click="blockedAlert" btn-content="yes" btn-color="red" />
+        <SmallButton @click="toggleModal" btn-content="no" btn-color="blue" />
+      </template>
+    </BaseModal>
   </div>
 </template>
 
