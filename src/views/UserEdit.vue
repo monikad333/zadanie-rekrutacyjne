@@ -3,11 +3,31 @@ import ProjectButton from '@/components/ProjectButton.vue'
 import DefaultCard from '@/components/DefaultCard.vue'
 import SmallButton from '@/components/SmallButton.vue'
 import { onMounted, ref } from 'vue'
+import DefaultInput from '@/components/DefaultInput.vue'
+import DropComponent from '@/components/DropComponent.vue'
 
-const permissions = ref()
+const userForm = ref({
+  permissions: [
+    {
+      name: ''
+    }
+  ],
+  attachments: {
+    name: '',
+    last_name: '',
+    birth_date: '',
+    files: ''
+  },
+  contact_information: {
+    instagram: '',
+    email: '',
+    twitter: '',
+    facebook: ''
+  }
+})
 
 onMounted(() => {
-  permissions.value = [
+  userForm.value.permissions = [
     {
       name: 'Script'
     },
@@ -25,6 +45,10 @@ onMounted(() => {
     }
   ]
 })
+
+const saveProfile = () => {
+  alert(JSON.stringify(userForm.value))
+}
 </script>
 
 <template>
@@ -38,7 +62,11 @@ onMounted(() => {
         <ProjectButton btn-color="rgb(197, 64, 64)" btn-content="delete"></ProjectButton>
         <ProjectButton btn-color="rgb(199, 156, 38)" btn-content="block"></ProjectButton>
         <ProjectButton btn-color="rgb(58, 75, 94)" btn-content="set password"></ProjectButton>
-        <ProjectButton btn-color="rgb(39, 96, 160)" btn-content="save"></ProjectButton>
+        <ProjectButton
+          @click="saveProfile"
+          btn-color="rgb(39, 96, 160)"
+          btn-content="save"
+        ></ProjectButton>
       </div>
     </div>
     <div class="row">
@@ -68,7 +96,10 @@ onMounted(() => {
                     </th>
                     <!-- <td class="px-6 py-4">Silver</td> -->
                   </tr>
-                  <tr v-for="permission of permissions" class="bg-white border-b bg-white-800">
+                  <tr
+                    v-for="permission of userForm.permissions"
+                    class="bg-white border-b bg-white-800"
+                  >
                     <th
                       scope="row"
                       class="px-6 py-4 font-medium text-xs text-gray-900 whitespace-nowrap text-gray"
@@ -82,14 +113,67 @@ onMounted(() => {
                       <SmallButton btn-color="#ce1d1d" btn-content="delete"></SmallButton>
                     </td>
                   </tr>
-                  
                 </tbody>
               </table>
             </div></div
         ></template>
       </DefaultCard>
       <DefaultCard left-content="Załączniki" right-content="Historia" class="card-right">
-        vsadvcsdvsd
+        <template #top class="bg-white">
+          <h1 class="attachment px-5 py-7 border-b text-xl bg-white">Załączniki</h1>
+        </template>
+        <template #bottom>
+          <div class="contact flex">
+            <div class="column">
+              <DefaultInput
+                v-model="userForm.attachments.name"
+                input-type="text"
+                label="Name"
+              ></DefaultInput>
+              <DefaultInput
+                v-model="userForm.attachments.last_name"
+                input-type="text"
+                label="Last name"
+              ></DefaultInput>
+              <DefaultInput
+                v-model="userForm.attachments.birth_date"
+                input-type="date"
+                label="Birth date"
+              ></DefaultInput>
+            </div>
+            <DropComponent v-model="userForm.attachments.files" class="mx-10 w-1/2"></DropComponent>
+          </div>
+
+          <h1 class="attachment px-5 py-7 border-b text-xl bg-white">Contact information</h1>
+          <div class="flex">
+            <DefaultInput
+              v-model="userForm.contact_information.instagram"
+              class="w-1/2"
+              input-type="text"
+              label="Instagram"
+            ></DefaultInput>
+            <DefaultInput
+              v-model="userForm.contact_information.twitter"
+              class="w-1/2"
+              input-type="text"
+              label="Twitter"
+            ></DefaultInput>
+          </div>
+          <div class="flex">
+            <DefaultInput
+              v-model="userForm.contact_information.email"
+              class="w-1/2"
+              input-type="text"
+              label="Email"
+            ></DefaultInput>
+            <DefaultInput
+              v-model="userForm.contact_information.facebook"
+              class="w-1/2"
+              input-type="text"
+              label="Facebook"
+            ></DefaultInput>
+          </div>
+        </template>
       </DefaultCard>
     </div>
   </div>
@@ -139,5 +223,9 @@ onMounted(() => {
 
 span {
   color: rgb(57, 57, 168);
+}
+
+.attachment {
+  color: blue;
 }
 </style>

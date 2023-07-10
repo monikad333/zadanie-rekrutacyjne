@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 defineProps<{
   leftContent: string
   rightContent: string
 }>()
+
+const isActive = ref(false)
+
+const changeCard = () => {
+  isActive.value = !isActive.value
+}
 </script>
 
 <template>
