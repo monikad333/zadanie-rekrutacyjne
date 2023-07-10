@@ -34,6 +34,7 @@ const toggleModal = () => {
 
 const blockedAlert = () => {
   alert('Profile is blocked')
+  toggleModal()
 }
 </script>
 
@@ -108,8 +109,8 @@ const blockedAlert = () => {
     <BaseModal @close="toggleModal" :modalActive="modalActive">
       <template #header>Are you sure you want to block the account?</template>
       <template #default>
-        <SmallButton @click="blockedAlert" btn-content="tak" btn-color="red" />
-        <SmallButton @click="toggleModal" btn-content="nie" btn-color="blue" />
+        <SmallButton @click="blockedAlert" btn-content="yes" btn-color="red" />
+        <SmallButton @click="toggleModal" btn-content="no" btn-color="blue" />
       </template>
     </BaseModal>
   </div>
